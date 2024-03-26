@@ -245,7 +245,7 @@ def cmd_is_nulary(cmd):
 @click.argument('input_yaml', type=click.File('r'))
 @click.argument('template', type=click.File('r'), default='./cmake.xml.tpl')
 def cli(input_yaml, template):
-    data = yaml.load(input_yaml, Loader=yaml.BaseLoader)
+    data = yaml.load(input_yaml, Loader=yaml.SafeLoader)
 
     # Partition `variables` and `environment-variables` lists into "pure" (key)words and regexes to match
     for var_key in _VAR_KIND_LIST:
